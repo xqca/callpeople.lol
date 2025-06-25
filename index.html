@@ -1,0 +1,97 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Group Call App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #181818;
+      color: white;
+      text-align: center;
+    }
+    #main {
+      padding: 20px;
+    }
+    video {
+      width: 300px;
+      height: 200px;
+      border: 2px solid #555;
+      margin: 10px;
+      border-radius: 8px;
+    }
+    #controls button,
+    #kickBtn {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    #videos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    #kickSection {
+      display: none;
+      margin-top: 10px;
+    }
+    #kickedMessage {
+      color: #ff4040;
+      font-size: 30px;
+      margin-top: 20px;
+      display: none;
+    }
+    #endCallMessage {
+      color: #ff4040;
+      font-size: 30px;
+      margin-top: 20px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="main">
+    <h1>Group Call</h1>
+
+
+    <div id="login">
+      <input id="nickname" placeholder="Enter nickname" />
+      <button onclick="hostRoom()">Host Room</button>
+      <input id="joinCode" placeholder="Room Code" />
+      <button onclick="joinRoom()">Join Room</button>
+    </div>
+
+
+    <div id="call" style="display: none;">
+      <p>Room Code: <span id="roomDisplay"></span></p>
+      <div id="videos"></div>
+      <div id="controls">
+        <button onclick="toggleCam()">Toggle Camera</button>
+        <button onclick="toggleMic()">Toggle Mic</button>
+        <button onclick="startScreenShare()">Start Screen Share</button>
+        <button onclick="stopScreenShare()">Stop Screen Share</button>
+        <button onclick="endCall()">Hang Up</button>
+      </div>
+
+
+      <div id="kickSection">
+        <input id="kickName" placeholder="Nickname to kick" />
+        <button id="kickBtn" onclick="kickUser()">Kick User</button>
+      </div>
+
+
+      <p style="margin-top: 20px; color: #bbb; font-size: 14px;">
+        If you hang up, refresh the page to start a new call.
+      </p>
+    </div>
+
+
+    <div id="kickedMessage">You have been kicked by the host. Refresh the page to start a new call.</div>
+  </div>
+
+
+  <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

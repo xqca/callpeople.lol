@@ -1,0 +1,87 @@
+#videos {
+  /* ADDED container grid styles */
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 10px !important;
+  justify-items: center !important;
+}
+
+#videos > div {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+#videos > div > video {
+  width: 500px !important;    /* updated from 300px */
+  height: 400px !important;   /* updated from 200px */
+  border-radius: 8px !important;
+  object-fit: cover !important;
+  background-color: transparent;
+  position: relative;
+}
+
+/* Camera off effect with text inside video background */
+#videos > div.camera-off > video {
+  background-color: black !important;
+  color: white !important;
+  position: relative;
+}
+
+#videos > div.camera-off > video::after {
+  content: "Camera Off";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  pointer-events: none;
+  user-select: none;
+  width: 100%;
+  text-align: center;
+  line-height: 400px; /* updated to new height */
+  background: transparent;
+  z-index: 1;
+}
+
+#videos > div > div[id^="label-"] {
+  margin-top: 6px !important;
+  background: #333 !important;
+  padding: 4px 10px !important;
+  border-radius: 5px !important;
+  font-size: 14px !important;
+  color: white !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Mic mute icon */
+#videos > div > div[id^="label-"] > span[id^="mic-"] {
+  margin-left: 6px !important;
+  color: #ff5252 !important;
+  user-select: none;
+}
+
+/* Chat notification dot moved outside button */
+#chatToggleBtn {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+}
+
+#chatNotificationDot {
+  width: 12px !important;
+  height: 12px !important;
+  background-color: #0b3d91 !important; /* Darker blue */
+  border-radius: 50% !important;
+  display: none !important;
+  pointer-events: none !important;
+  user-select: none !important;
+  margin-left: 8px !important;
+  vertical-align: middle !important;
+  display: inline-block !important;
+}
